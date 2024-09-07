@@ -264,6 +264,65 @@ spec:
                         type: string
                       adminUrl:
                         type: string
+                      attributes:
+                        properties:
+                          access.token.lifespan:
+                            type: string
+                          backchannel.logout.revoke.offline.tokens:
+                            type: boolean
+                          backchannel.logout.session.required:
+                            type: boolean
+                          backchannel.logout.url:
+                            type: string
+                          client.offline.session.idle.timeout:
+                            type: string
+                          client.offline.session.max.lifespan:
+                            type: string
+                          client.session.idle.timeout:
+                            type: string
+                          client.session.max.lifespan:
+                            type: string
+                          client_credentials.use_refresh_token:
+                            type: boolean
+                          consent.screen.text:
+                            type: string
+                          display.on.consent.screen:
+                            type: boolean
+                          exclude.session.state.from.auth.response:
+                            type: boolean
+                          frontchannel.logout.url:
+                            type: string
+                          login_theme:
+                            type: string
+                          oauth2.device.authorization.grant.enabled:
+                            type: boolean
+                          oauth2.device.code.lifespan:
+                            type: string
+                          oauth2.device.polling.interval:
+                            type: string
+                          pkce.code.challenge.method:
+                            type: string
+                          post.logout.redirect.uris:
+                            items:
+                              type: string
+                            type: array
+                          use.refresh.tokens:
+                            type: boolean
+                        required:
+                        - access.token.lifespan
+                        - backchannel.logout.revoke.offline.tokens
+                        - backchannel.logout.session.required
+                        - backchannel.logout.url
+                        - client_credentials.use_refresh_token
+                        - consent.screen.text
+                        - display.on.consent.screen
+                        - exclude.session.state.from.auth.response
+                        - frontchannel.logout.url
+                        - login_theme
+                        - oauth2.device.authorization.grant.enabled
+                        - pkce.code.challenge.method
+                        - use.refresh.tokens
+                        type: object
                       authorization:
                         items:
                           properties:
@@ -455,6 +514,72 @@ spec:
                         type: string
                       assertionConsumerRedirectUrl:
                         type: string
+                      attributes:
+                        properties:
+                          login_theme:
+                            type: string
+                          saml.assertion.signature:
+                            type: boolean
+                          saml.authnstatement:
+                            type: boolean
+                          saml.client.signature:
+                            type: boolean
+                          saml.encrypt:
+                            type: boolean
+                          saml.encryption.certificate:
+                            type: string
+                          saml.force.post.binding:
+                            type: boolean
+                          saml.server.signature:
+                            type: boolean
+                          saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer:
+                            type: string
+                          saml.signature.algorithm:
+                            type: string
+                          saml.signing.certificate:
+                            type: string
+                          saml.signing.private.key:
+                            type: string
+                          saml_assertion_consumer_url_post:
+                            type: string
+                          saml_assertion_consumer_url_redirect:
+                            type: string
+                          saml_force_name_id_format:
+                            type: boolean
+                          saml_idp_initiated_sso_relay_state:
+                            type: string
+                          saml_idp_initiated_sso_url_name:
+                            type: string
+                          saml_name_id_format:
+                            type: string
+                          saml_signature_canonicalization_method:
+                            type: string
+                          saml_single_logout_service_url_post:
+                            type: string
+                          saml_single_logout_service_url_redirect:
+                            type: string
+                        required:
+                        - login_theme
+                        - saml.assertion.signature
+                        - saml.authnstatement
+                        - saml.client.signature
+                        - saml.encrypt
+                        - saml.encryption.certificate
+                        - saml.force.post.binding
+                        - saml.server.signature
+                        - saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer
+                        - saml.signature.algorithm
+                        - saml.signing.private.key
+                        - saml_assertion_consumer_url_post
+                        - saml_assertion_consumer_url_redirect
+                        - saml_force_name_id_format
+                        - saml_idp_initiated_sso_relay_state
+                        - saml_idp_initiated_sso_url_name
+                        - saml_name_id_format
+                        - saml_signature_canonicalization_method
+                        - saml_single_logout_service_url_post
+                        - saml_single_logout_service_url_redirect
+                        type: object
                       canonicalizationMethod:
                         type: string
                       clientSignatureRequired:
@@ -506,8 +631,17 @@ spec:
                 - clientId
                 type: object
               initProvider:
-                description: ClientInitParameters are the configurable fields of a
-                  Client.
+                description: |-
+                  THIS IS A BETA FIELD. It will be honored
+                  unless the Management Policies feature flag is disabled.
+                  InitProvider holds the same fields as ForProvider, with the exception
+                  of Identifier and other resource reference fields. The fields that are
+                  in InitProvider are merged into ForProvider when the resource is created.
+                  The same fields are also added to the terraform ignore_changes hook, to
+                  avoid updating them after creation. This is useful for fields that are
+                  required on creation, but we do not desire to update them after creation,
+                  for example because of an external controller is managing them, like an
+                  autoscaler.
                 properties:
                   authenticationFlowBindingOverrides:
                     items:
@@ -700,6 +834,65 @@ spec:
                         type: string
                       adminUrl:
                         type: string
+                      attributes:
+                        properties:
+                          access.token.lifespan:
+                            type: string
+                          backchannel.logout.revoke.offline.tokens:
+                            type: boolean
+                          backchannel.logout.session.required:
+                            type: boolean
+                          backchannel.logout.url:
+                            type: string
+                          client.offline.session.idle.timeout:
+                            type: string
+                          client.offline.session.max.lifespan:
+                            type: string
+                          client.session.idle.timeout:
+                            type: string
+                          client.session.max.lifespan:
+                            type: string
+                          client_credentials.use_refresh_token:
+                            type: boolean
+                          consent.screen.text:
+                            type: string
+                          display.on.consent.screen:
+                            type: boolean
+                          exclude.session.state.from.auth.response:
+                            type: boolean
+                          frontchannel.logout.url:
+                            type: string
+                          login_theme:
+                            type: string
+                          oauth2.device.authorization.grant.enabled:
+                            type: boolean
+                          oauth2.device.code.lifespan:
+                            type: string
+                          oauth2.device.polling.interval:
+                            type: string
+                          pkce.code.challenge.method:
+                            type: string
+                          post.logout.redirect.uris:
+                            items:
+                              type: string
+                            type: array
+                          use.refresh.tokens:
+                            type: boolean
+                        required:
+                        - access.token.lifespan
+                        - backchannel.logout.revoke.offline.tokens
+                        - backchannel.logout.session.required
+                        - backchannel.logout.url
+                        - client_credentials.use_refresh_token
+                        - consent.screen.text
+                        - display.on.consent.screen
+                        - exclude.session.state.from.auth.response
+                        - frontchannel.logout.url
+                        - login_theme
+                        - oauth2.device.authorization.grant.enabled
+                        - pkce.code.challenge.method
+                        - use.refresh.tokens
+                        type: object
                       authorization:
                         items:
                           properties:
@@ -891,6 +1084,72 @@ spec:
                         type: string
                       assertionConsumerRedirectUrl:
                         type: string
+                      attributes:
+                        properties:
+                          login_theme:
+                            type: string
+                          saml.assertion.signature:
+                            type: boolean
+                          saml.authnstatement:
+                            type: boolean
+                          saml.client.signature:
+                            type: boolean
+                          saml.encrypt:
+                            type: boolean
+                          saml.encryption.certificate:
+                            type: string
+                          saml.force.post.binding:
+                            type: boolean
+                          saml.server.signature:
+                            type: boolean
+                          saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer:
+                            type: string
+                          saml.signature.algorithm:
+                            type: string
+                          saml.signing.certificate:
+                            type: string
+                          saml.signing.private.key:
+                            type: string
+                          saml_assertion_consumer_url_post:
+                            type: string
+                          saml_assertion_consumer_url_redirect:
+                            type: string
+                          saml_force_name_id_format:
+                            type: boolean
+                          saml_idp_initiated_sso_relay_state:
+                            type: string
+                          saml_idp_initiated_sso_url_name:
+                            type: string
+                          saml_name_id_format:
+                            type: string
+                          saml_signature_canonicalization_method:
+                            type: string
+                          saml_single_logout_service_url_post:
+                            type: string
+                          saml_single_logout_service_url_redirect:
+                            type: string
+                        required:
+                        - login_theme
+                        - saml.assertion.signature
+                        - saml.authnstatement
+                        - saml.client.signature
+                        - saml.encrypt
+                        - saml.encryption.certificate
+                        - saml.force.post.binding
+                        - saml.server.signature
+                        - saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer
+                        - saml.signature.algorithm
+                        - saml.signing.private.key
+                        - saml_assertion_consumer_url_post
+                        - saml_assertion_consumer_url_redirect
+                        - saml_force_name_id_format
+                        - saml_idp_initiated_sso_relay_state
+                        - saml_idp_initiated_sso_url_name
+                        - saml_name_id_format
+                        - saml_signature_canonicalization_method
+                        - saml_single_logout_service_url_post
+                        - saml_single_logout_service_url_redirect
+                        type: object
                       canonicalizationMethod:
                         type: string
                       clientSignatureRequired:
@@ -1305,6 +1564,65 @@ spec:
                         type: string
                       adminUrl:
                         type: string
+                      attributes:
+                        properties:
+                          access.token.lifespan:
+                            type: string
+                          backchannel.logout.revoke.offline.tokens:
+                            type: boolean
+                          backchannel.logout.session.required:
+                            type: boolean
+                          backchannel.logout.url:
+                            type: string
+                          client.offline.session.idle.timeout:
+                            type: string
+                          client.offline.session.max.lifespan:
+                            type: string
+                          client.session.idle.timeout:
+                            type: string
+                          client.session.max.lifespan:
+                            type: string
+                          client_credentials.use_refresh_token:
+                            type: boolean
+                          consent.screen.text:
+                            type: string
+                          display.on.consent.screen:
+                            type: boolean
+                          exclude.session.state.from.auth.response:
+                            type: boolean
+                          frontchannel.logout.url:
+                            type: string
+                          login_theme:
+                            type: string
+                          oauth2.device.authorization.grant.enabled:
+                            type: boolean
+                          oauth2.device.code.lifespan:
+                            type: string
+                          oauth2.device.polling.interval:
+                            type: string
+                          pkce.code.challenge.method:
+                            type: string
+                          post.logout.redirect.uris:
+                            items:
+                              type: string
+                            type: array
+                          use.refresh.tokens:
+                            type: boolean
+                        required:
+                        - access.token.lifespan
+                        - backchannel.logout.revoke.offline.tokens
+                        - backchannel.logout.session.required
+                        - backchannel.logout.url
+                        - client_credentials.use_refresh_token
+                        - consent.screen.text
+                        - display.on.consent.screen
+                        - exclude.session.state.from.auth.response
+                        - frontchannel.logout.url
+                        - login_theme
+                        - oauth2.device.authorization.grant.enabled
+                        - pkce.code.challenge.method
+                        - use.refresh.tokens
+                        type: object
                       authorization:
                         items:
                           properties:
@@ -1496,6 +1814,72 @@ spec:
                         type: string
                       assertionConsumerRedirectUrl:
                         type: string
+                      attributes:
+                        properties:
+                          login_theme:
+                            type: string
+                          saml.assertion.signature:
+                            type: boolean
+                          saml.authnstatement:
+                            type: boolean
+                          saml.client.signature:
+                            type: boolean
+                          saml.encrypt:
+                            type: boolean
+                          saml.encryption.certificate:
+                            type: string
+                          saml.force.post.binding:
+                            type: boolean
+                          saml.server.signature:
+                            type: boolean
+                          saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer:
+                            type: string
+                          saml.signature.algorithm:
+                            type: string
+                          saml.signing.certificate:
+                            type: string
+                          saml.signing.private.key:
+                            type: string
+                          saml_assertion_consumer_url_post:
+                            type: string
+                          saml_assertion_consumer_url_redirect:
+                            type: string
+                          saml_force_name_id_format:
+                            type: boolean
+                          saml_idp_initiated_sso_relay_state:
+                            type: string
+                          saml_idp_initiated_sso_url_name:
+                            type: string
+                          saml_name_id_format:
+                            type: string
+                          saml_signature_canonicalization_method:
+                            type: string
+                          saml_single_logout_service_url_post:
+                            type: string
+                          saml_single_logout_service_url_redirect:
+                            type: string
+                        required:
+                        - login_theme
+                        - saml.assertion.signature
+                        - saml.authnstatement
+                        - saml.client.signature
+                        - saml.encrypt
+                        - saml.encryption.certificate
+                        - saml.force.post.binding
+                        - saml.server.signature
+                        - saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer
+                        - saml.signature.algorithm
+                        - saml.signing.private.key
+                        - saml_assertion_consumer_url_post
+                        - saml_assertion_consumer_url_redirect
+                        - saml_force_name_id_format
+                        - saml_idp_initiated_sso_relay_state
+                        - saml_idp_initiated_sso_url_name
+                        - saml_name_id_format
+                        - saml_signature_canonicalization_method
+                        - saml_single_logout_service_url_post
+                        - saml_single_logout_service_url_redirect
+                        type: object
                       canonicalizationMethod:
                         type: string
                       clientSignatureRequired:

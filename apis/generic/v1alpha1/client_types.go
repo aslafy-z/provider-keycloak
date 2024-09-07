@@ -23,7 +23,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
-	"github.com/mrparkers/terraform-provider-keycloak/keycloak/types"
 )
 
 type AuthenticationFlowBindingOverridesInitParameters struct {
@@ -141,27 +140,26 @@ type AuthorizationParameters struct {
 }
 
 type OpenidClientAttributes struct {
-	PkceCodeChallengeMethod               *string                           `json:"pkce.code.challenge.method"`
-	ExcludeSessionStateFromAuthResponse   *bool                             `json:"exclude.session.state.from.auth.response"`
-	AccessTokenLifespan                   *string                           `json:"access.token.lifespan"`
-	LoginTheme                            *string                           `json:"login_theme"`
-	ClientOfflineSessionIdleTimeout       *string                           `json:"client.offline.session.idle.timeout,omitempty"`
-	DisplayOnConsentScreen                *bool                             `json:"display.on.consent.screen"`
-	ConsentScreenText                     *string                           `json:"consent.screen.text"`
-	ClientOfflineSessionMaxLifespan       *string                           `json:"client.offline.session.max.lifespan,omitempty"`
-	ClientSessionIdleTimeout              *string                           `json:"client.session.idle.timeout,omitempty"`
-	ClientSessionMaxLifespan              *string                           `json:"client.session.max.lifespan,omitempty"`
-	UseRefreshTokens                      *bool                             `json:"use.refresh.tokens"`
-	UseRefreshTokensClientCredentials     *bool                             `json:"client_credentials.use_refresh_token"`
-	BackchannelLogoutUrl                  *string                           `json:"backchannel.logout.url"`
-	FrontchannelLogoutUrl                 *string                           `json:"frontchannel.logout.url"`
-	BackchannelLogoutRevokeOfflineTokens  *bool                             `json:"backchannel.logout.revoke.offline.tokens"`
-	BackchannelLogoutSessionRequired      *bool                             `json:"backchannel.logout.session.required"`
-	ExtraConfig                           *map[string]interface{}           `json:"-"`
-	Oauth2DeviceAuthorizationGrantEnabled *bool                             `json:"oauth2.device.authorization.grant.enabled"`
-	Oauth2DeviceCodeLifespan              *string                           `json:"oauth2.device.code.lifespan,omitempty"`
-	Oauth2DevicePollingInterval           *string                           `json:"oauth2.device.polling.interval,omitempty"`
-	PostLogoutRedirectUris                *types.KeycloakSliceHashDelimited `json:"post.logout.redirect.uris,omitempty"`
+	PkceCodeChallengeMethod               *string   `json:"pkce.code.challenge.method"`
+	ExcludeSessionStateFromAuthResponse   *bool     `json:"exclude.session.state.from.auth.response"`
+	AccessTokenLifespan                   *string   `json:"access.token.lifespan"`
+	LoginTheme                            *string   `json:"login_theme"`
+	ClientOfflineSessionIdleTimeout       *string   `json:"client.offline.session.idle.timeout,omitempty"`
+	DisplayOnConsentScreen                *bool     `json:"display.on.consent.screen"`
+	ConsentScreenText                     *string   `json:"consent.screen.text"`
+	ClientOfflineSessionMaxLifespan       *string   `json:"client.offline.session.max.lifespan,omitempty"`
+	ClientSessionIdleTimeout              *string   `json:"client.session.idle.timeout,omitempty"`
+	ClientSessionMaxLifespan              *string   `json:"client.session.max.lifespan,omitempty"`
+	UseRefreshTokens                      *bool     `json:"use.refresh.tokens"`
+	UseRefreshTokensClientCredentials     *bool     `json:"client_credentials.use_refresh_token"`
+	BackchannelLogoutUrl                  *string   `json:"backchannel.logout.url"`
+	FrontchannelLogoutUrl                 *string   `json:"frontchannel.logout.url"`
+	BackchannelLogoutRevokeOfflineTokens  *bool     `json:"backchannel.logout.revoke.offline.tokens"`
+	BackchannelLogoutSessionRequired      *bool     `json:"backchannel.logout.session.required"`
+	Oauth2DeviceAuthorizationGrantEnabled *bool     `json:"oauth2.device.authorization.grant.enabled"`
+	Oauth2DeviceCodeLifespan              *string   `json:"oauth2.device.code.lifespan,omitempty"`
+	Oauth2DevicePollingInterval           *string   `json:"oauth2.device.polling.interval,omitempty"`
+	PostLogoutRedirectUris                []*string `json:"post.logout.redirect.uris,omitempty"`
 }
 
 // OpenIDConfig contains the fields specific to OpenID clients.
@@ -225,8 +223,6 @@ type SamlClientAttributes struct {
 	LogoutServicePostBindingURL     string `json:"saml_single_logout_service_url_post"`
 	LogoutServiceRedirectBindingURL string `json:"saml_single_logout_service_url_redirect"`
 	LoginTheme                      string `json:"login_theme"`
-
-	ExtraConfig map[string]interface{} `json:"-"`
 }
 
 // SamlConfig contains the fields specific to SAML clients.
