@@ -256,7 +256,7 @@ func (c *external) Observe(ctx context.Context, mg resource.Managed) (managed.Ex
 	cr.Status.AtProvider.Name = existing_client.Name
 	cr.Status.AtProvider.Description = existing_client.Description
 	cr.Status.AtProvider.Enabled = existing_client.Enabled
-	cr.Status.AtProvider.LoginTheme = ""
+	
 
 	authflow := *existing_client.AuthenticationFlowBindingOverrides
 	if authflow != nil {
